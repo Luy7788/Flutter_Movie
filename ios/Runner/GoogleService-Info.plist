@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1026811487196-47duemk4r97kcnt2jicupgt90o5fbe7p.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1026811487196-47duemk4r97kcnt2jicupgt90o5fbe7p</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDKdkojtbQj0VLl7UaI6iby9wfx4mHqnLw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1026811487196</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.nmtv.ios</string>
+	<key>PROJECT_ID</key>
+	<string>nmtv-5cbc9</string>
+	<key>STORAGE_BUCKET</key>
+	<string>nmtv-5cbc9.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1026811487196:ios:f223430d944185d9a8e519</string>
+	<key>DATABASE_URL</key>
+	<string>https://nmtv-5cbc9.firebaseio.com</string>
+</dict>
+</plist>

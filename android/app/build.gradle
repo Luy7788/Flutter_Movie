@@ -1,0 +1,110 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+apply plugin: 'com.android.application'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+def keystorePropertiesFile = rootProject.file("key.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+    compileSdkVersion 28
+    lintOptions {
+        disable 'InvalidPackage' //关闭一项lint警告：
+//        checkReleaseBuilds false
+//        abortOnError false
+    }
+
+//    sourceSets {
+//        main {
+//            jniLibs.srcDirs = ['libs']
+//        }
+//    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId "com.nmtv.android"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//        ndk{
+//            abiFilters "armeabi-v7a","arm64-v8a"
+//        }
+    }
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
+    buildTypes {//这个闭包主要指定生成安装文件的主要配置，一般包含两个子闭包
+        debug {
+//            ndk {
+//                //这里要加上，否则debug包会出问题,后面三个为可选，x86建议加上不然部分模拟器回报错
+//                abiFilters "armeabi", "armeabi-v7a", "arm64-v8a",  "x86"
+//            }
+            signingConfig signingConfigs.debug
+        }
+        release {
+//            ndk{
+//                abiFilters "armeabi-v7a" //x86","armeabi-v8a","armeabi"删掉v8a
+//                abiFilters "armeabi"//, "armeabi-v7a", "x86", "mips"
+//            }
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            // 替换成 release
+            signingConfig signingConfigs.release    //签名
+//            buildConfigField "boolean", "LOG_DEBUG", "false"  // 不显示Log
+//            zipAlignEnabled true                    //是否对APK包执行ZIP对齐优化，减小zip体积，增加运行效率
+//            shrinkResources true                    //移除无用的resource文件，导入的model不可以配置
+
+//            minifyEnabled true //混淆'
+            useProguard true //减小体积
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+//repositories {
+//    flatDir {
+//        dirs 'libs'
+//    }
+//}
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+//    implementation fileTree(dir: 'libs', include: ['*.aar'])
+}
+//apply plugin: 'com.google.gms.google-services'

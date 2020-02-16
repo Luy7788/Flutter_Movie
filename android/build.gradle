@@ -1,0 +1,50 @@
+buildscript {//闭包里是gradle脚本执行所需依赖，分别是对应的maven库和插件。
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.3'
+    }
+
+    subprojects {
+        project.configurations.all {
+            resolutionStrategy.eachDependency { details ->
+                if (details.requested.group == 'com.android.support'
+                        && !details.requested.name.contains('multidex') ) {
+                    details.useVersion "27.1.0"
+                }
+//                if (details.requested.group == 'androidx.core'
+//                        && !details.requested.name.contains('androidx') ) {
+//                    details.useVersion "1.0.0"
+//                }
+            }
+        }
+    }
+}
+
+allprojects {//闭包里是项目本身需要的依赖，比如项目所需的maven库。
+    repositories {
+        google()
+        jcenter()
+    }
+//    显示详细错误报告
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
+    }
+}
+
+rootProject.buildDir = '../build'
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(':app')
+}
+
+task clean(type: Delete) {//是运行gradle clean时，执行此处定义的task任务，该任务继承自Delete，删除根目录中的build目录
+    delete rootProject.buildDir
+}
