@@ -29,6 +29,7 @@
 <!--                android:resource="@xml/gdt_file_path" />-->
 <!--        </provider>-->
 
+        <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
