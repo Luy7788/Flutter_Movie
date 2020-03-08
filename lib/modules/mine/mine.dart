@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:nmtv/common/net/api.dart';
 import 'package:nmtv/common/utils/cache.dart';
 import 'package:nmtv/common/utils/navigation.dart';
 import 'package:nmtv/common/utils/toast.dart';
@@ -86,7 +87,7 @@ class __mimeListState extends State<_mimeList> {
           title: '关于我们',
           tapAction: () {
             Navigation.pushWebview(
-                context, '关于我们', "http://lemon.xjqxz.top/about.html");
+                context, '关于我们', API.about);
           },
         ),
         _listCard(
@@ -129,7 +130,6 @@ class _listCard extends StatelessWidget {
       //水波纹
       onTap: () {
         this.tapAction(); // ?? this.tapAction();
-//        Navigation.pushWebView(context, '关于我们', "http://lemon.xjqxz.top/about.html");
       },
       child: Container(
         decoration: BoxDecoration(

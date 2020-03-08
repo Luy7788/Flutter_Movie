@@ -1,11 +1,14 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+
 class Config {
-  static final isRelease = bool.fromEnvironment('dart.vm.product');
+  static final isRelease = (kIsWeb == true ? false : bool.fromEnvironment('dart.vm.product'));
 
   static final isIOS = Platform.isIOS;
 
   static final isAndroid = Platform.isAndroid;
+
 //  static const DEBUG = (isRelease == true ? true : false);
 
   static const PAGE_SIZE = 30; //列表页分页
@@ -16,11 +19,11 @@ class Config {
 
   static const API_VERSION = "1.0.0"; //API 版本
 
-  static const HISTORY_FOOTMARK_SIZE = 100;//历史列表长度
+  static const HISTORY_FOOTMARK_SIZE = 100; //历史列表长度
 
-  static const HISTORY_SEARCH_SIZE = 10;//搜索记录长度
+  static const HISTORY_SEARCH_SIZE = 10; //搜索记录长度
 
-  static const ADMOB_InterstitialAd_Count = 60*40;//弹窗广告倒计时，单位秒
+  static const ADMOB_InterstitialAd_Count = 60 * 40; //弹窗广告倒计时，单位秒
 
   //缓存
   static const PREFS_BASE_URL = "prefsBaseUrl"; //配置
@@ -32,7 +35,7 @@ class Config {
   static const PREFS_MOVIE_PORGRESS = "prefsMovieProgress"; //观看进度
 
   //AES
-  static const AES_KEY = "";
+  static const AES_KEY = "";//需要获取加密请私信
   static const AES_IV = "";
 
   //admob

@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:nmtv/common/config/config.dart';
 import 'package:nmtv/common/utils/global.dart';
 import 'package:nmtv/common/config/adapt.dart';
@@ -9,6 +10,8 @@ import 'package:nmtv/common/utils/UrlEncode.dart';
 class API {
   //API
   static const basetUrl = "http://lemon.xjqxz.top";
+
+//  static const basetUrl = "http://localhost:7878";
 
   static const getBaseUrl = "https://gitee.com/yzcai/static/raw/master/domain";
 
@@ -41,21 +44,29 @@ class API {
 
   //反馈
   static const feedback = basetUrl + "/api/movie/feedback";
+
+  static const about = basetUrl + "/about.html";
 }
 
 class baseParams {
   Map params() {
     var map = new Map();
-    map["ve"] = Global.packageInfo.version ?? Config.APP_VERSION; //Config.AppVersion;//
-
-    String adid =
-        Global.udid ?? (Global.adid.length > 0 ? Global.adid : Global.uuid);
-    if (adid.length == 0) {
+    String adid;
+    if (kIsWeb == false) {
+      map["ve"] = Global.packageInfo.version ?? Config.APP_VERSION;
+      adid =
+          Global.udid ?? (Global.adid.length > 0 ? Global.adid : Global.uuid);
+      if (adid.length == 0) {
+        adid = "0000-0000-0000-0000-0000-0000-0000-0000";
+      }
+      if (adid.length == 16) {
+        adid = "$adid$adid";
+      }
+    } else {
+      map["ve"] = Config.APP_VERSION;
       adid = "0000-0000-0000-0000-0000-0000-0000-0000";
     }
-    if (adid.length == 16) {
-      adid = "$adid$adid";
-    }
+
     var now = DateTime.now();
     adid = adid.replaceAll("-", "") +
         '`' +
@@ -72,11 +83,13 @@ class baseParams {
       //android相关代码
       map["ct"] = "android";
       map["os"] = Global.androidInfo.version.release ?? "0";
+    } else {
+      map["ct"] = "ipad";
+      map["os"] = "1.0";
     }
     int width = Adapt.screenPixelW().toInt();
     int height = Adapt.screenPixelH().toInt();
     map["ss"] = width.toString() + "x" + height.toString();
-//    print("map-> ${map}");
     return map;
   }
 }

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:ui';
 
 //import 'package:firebase_admob/firebase_admob.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nmtv/common/config/adapt.dart';
@@ -31,8 +32,10 @@ class admob {
     String ad_id = '';
     if (Config.isIOS == true) {
       ad_id = Config.ADMOB_APP_ID_iOS;
-    } else {
+    } else if (Config.isAndroid == true) {
       ad_id = Config.ADMOB_APP_ID_Android;
+    } else {
+      return;
     }
     Admob.initialize(ad_id);
 
@@ -52,7 +55,7 @@ class admob {
     //屏幕宽高
     RenderBox renderBox = context.findRenderObject();
     var screenSize = renderBox.size;
-    print('Global.config.enableAdnet ${Global.config.enableAdnet}');
+//    print('Global.config.enableAdnet ${Global.config.enableAdnet}');
     //正式创建Overlay
     return OverlayEntry(
         builder: (context) => Positioned(
@@ -71,6 +74,9 @@ class admob {
 
   //现实显示具体方法 在需要的地方掉用即可
   showBanner(BuildContext context, bool isShow) {
+    if(kIsWeb == true) {
+      return;
+    }
     if (isShow) {
       _overlay = _createSelectViewWithContext(context);
       Overlay.of(context).insert(_overlay);
@@ -89,7 +95,7 @@ class admob {
     if (Config.isRelease == true) {
       if (Config.isIOS == true) {
         id = Config.ADMOB_Banner_UnitID_iOS;
-      } else {
+      } else if (Config.isAndroid == true) {
         id = Config.ADMOB_Banner_UnitID_Android;
       }
     } else {
@@ -104,7 +110,7 @@ class admob {
     if (Config.isRelease == true) {
       if (Config.isIOS == true) {
         id = Config.ADMOB_Interstitial_UnitID_iOS;
-      } else {
+      } else if (Config.isAndroid == true) {
         id = Config.ADMOB_Interstitial_UnitID_Android;
       }
     } else {

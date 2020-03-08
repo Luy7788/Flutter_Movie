@@ -1,4 +1,4 @@
-package com.nmtv.android;
+package com.nmtv.androidTest;
 
 import android.os.Build;
 import android.os.Bundle;

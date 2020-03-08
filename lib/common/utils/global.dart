@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:nmtv/common/model/eventBusModes.dart';
 import 'package:nmtv/common/model/movieDetailModel.dart';
@@ -66,9 +67,11 @@ class global {
     if (Config.isIOS == true) {
       IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
       return iosDeviceInfo.identifierForVendor; // unique ID on iOS
-    } else {
+    } else if (Config.isAndroid == true)  {
       AndroidDeviceInfo androidDeviceInfo = await deviceInfo.androidInfo;
       return androidDeviceInfo.androidId; // unique ID on Android
+    } else {
+      return "";
     }
   }
 
@@ -112,6 +115,8 @@ class global {
       print('Running on androidInfo: ${androidInfo.model}');
       print('Running on androidInfo version: ${this.androidInfo.version.release} ');
       print('Running on androidInfo: id:${this.androidInfo.androidId}');
+    } else {
+      print("不是安卓和iOS");
     }
 
     //获取缓存配置
@@ -214,6 +219,9 @@ class global {
 
   //保存首页列表
   void saveHomeList(List<movieListModel> homeList) {
+    if(kIsWeb == true) {
+      return;
+    }
     List<String> itemList = List();
     for (movieListModel item in homeList) {
       //转字符串保存
@@ -228,6 +236,9 @@ class global {
 
   //保存搜索历史
   void saveSearchHistory(List<String> history) {
+    if(kIsWeb == true) {
+      return;
+    }
     this.prefs.setStringList(Config.PREFS_SEARCH, history).then((isSave) {
       print("=======saveSearchHistory isSave : " + isSave.toString());
     });
@@ -235,6 +246,9 @@ class global {
 
   //保存观看历史
   void saveMovieHistroy(movieDetailModel model) {
+    if(kIsWeb == true) {
+      return;
+    }
     for (movieDetailModel item in this.footmarkListCache) {
       if (item.movieID == model.movieID) {
         this.footmarkListCache.remove(item);
@@ -258,6 +272,9 @@ class global {
 
   //清除足迹
   void cleanAllFootmark() {
+    if(kIsWeb == true) {
+      return;
+    }
     this.footmarkListCache.clear();
     this.prefs.setStringList(Config.PREFS_FOOTMARK, List()).then((isSave) {
       print("=======cleanAllFootmark isSave : " + isSave.toString());

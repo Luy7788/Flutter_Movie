@@ -94,7 +94,8 @@ class _movieDetailState extends State<movieDetail>
     if (_detailPageControl.length <= 0) {
       Wakelock.disable(); //可以锁屏
     }
-    print('\n\n\n---------------------------- _detailPageControl.remove \n$_detailPageControl\n\n\n');
+    print(
+        '\n\n\n---------------------------- _detailPageControl.remove \n$_detailPageControl\n\n\n');
 
     super.dispose();
     ijkController?.dispose();
@@ -187,14 +188,7 @@ class _movieDetailState extends State<movieDetail>
   }
 
   void _playWithUrl(String url) async {
-    await ijkController.setNetworkDataSource(url,
-//      'https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4',
-        // 'rtmp://172.16.100.245/live1',
-        // 'https://www.sample-videos.com/video123/flv/720/big_buck_bunny_720p_10mb.flv',
-//              "https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
-        // 'http://184.72.239.149/vod/smil:BigBuckBunny.smil/playlist.m3u8',
-        // "file:///sdcard/Download/Sample1.mp4",
-        autoPlay: true);
+    await ijkController.setNetworkDataSource(url, autoPlay: true);
     print("set data source success $this");
     await ijkController.play();
     print("set ijkplayer play success");
@@ -251,7 +245,8 @@ class _movieDetailState extends State<movieDetail>
 //          }
           _playWithUrl(response);
           //上报链接
-          Global.uploadRealLink(_currentLinkModel.realPlayLink, _currentLinkModel.id);
+          Global.uploadRealLink(
+              _currentLinkModel.realPlayLink, _currentLinkModel.id);
         } else {
           _showAlertToWeb();
         }
@@ -380,7 +375,7 @@ class _movieDetailState extends State<movieDetail>
         child: Column(
           children: <Widget>[
             Container(
-              height: 20+Adapt.padTopH(),
+              height: 20 + Adapt.padTopH(),
               color: Colors.black, //Colors.yellow.shade600,//Color(0xBB000000),
             ),
             Container(
@@ -433,7 +428,10 @@ class _movieDetailState extends State<movieDetail>
             ),
             Container(
               alignment: Alignment.bottomCenter,
-              height: Adapt.screenCurrentH(context) - (20+Adapt.padTopH()) - 200 - 40,
+              height: Adapt.screenCurrentH(context) -
+                  (20 + Adapt.padTopH()) -
+                  200 -
+                  40,
               child: TabBarView(
                 controller: this._tabController,
                 children: <Widget>[

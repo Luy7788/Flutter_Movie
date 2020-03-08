@@ -72,11 +72,6 @@ class HttpManager {
       },
     ));
 
-    //获取地址
-//    _dio.get("https://gitee.com/yzcai/static/raw/master/domain").then((value) {
-//      //FIXME:记得处理动态地址
-//      print('获取地址成功'); //#http://lemon.xjqxz.top
-//    });
   }
 
   Future dioGet(String url) async {
@@ -123,6 +118,7 @@ class HttpManager {
         print('get请求取消! ' + e.message);
       }
       print('get请求发生错误：$e');
+      return null;
     }
     return response.data;
   }
@@ -148,6 +144,7 @@ class HttpManager {
         print('post请求取消! ' + e.message);
       }
       print('post请求发生错误：$e');
+      return null;
     }
     return response.data;
   }
