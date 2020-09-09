@@ -1,6 +1,8 @@
 # Flutter_Movie
 flutter写的一个电影类APP
 
+##目前该项目服务器已下架，跑起来无法看到正常页面
+
 效果预览:
 
 ![图片1](https://github.com/Luy7788/Flutter_Movie/blob/master/res/IMG_8410.PNG) 
