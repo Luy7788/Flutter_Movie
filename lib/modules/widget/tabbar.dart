@@ -57,20 +57,6 @@ class _NMtabbbarState extends State<NMtabbbar> {
       ..add(footmarkPage())
       ..add(minePage());
 
-    //监听通知
-    _configSubscription =
-        Global.eventBus.on<eventBusBannerAd>().listen((event) {
-      if (event.isShow == true) {
-//        _admob.showAdBanner();
-        _admob.showBanner(context, true);
-        print("------- 接收到eventBus banner广告打开通知");
-      } else {
-//        _admob.hideAdBanner();
-        _admob.showBanner(context, false);
-//        _admob.showInterstitialAd();
-        print("------- 接收到eventBus banner广告关闭通知");
-      }
-    });
   }
 
   @override

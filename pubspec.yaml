@@ -25,10 +25,6 @@ dependencies:
   flutter_ijkplayer: ^0.3.5+1
   #cache
   path_provider: ^1.5.1
-  #admob
-  #  firebase_admob: ^0.9.0+10
-  #  firebase_admob: any
-  admob_flutter: 0.3.4
   #event_bus
   event_bus: 1.1.0
   #请求
