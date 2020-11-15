@@ -1,12 +1,10 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:nmtv/common/model/eventBusModes.dart';
 import 'package:nmtv/common/model/movieDetailModel.dart';
 import 'package:nmtv/common/model/movieListModel.dart';
 import 'package:nmtv/common/utils/toast.dart';
-import 'package:unique_ids/unique_ids.dart';
-import 'package:flutter/services.dart';
+// import 'package:unique_ids/unique_ids.dart';
+// import 'package:flutter/services.dart';
 import 'package:package_info/package_info.dart';
 import 'package:device_info/device_info.dart';
 import 'package:encrypt/encrypt.dart' as PP;
@@ -84,23 +82,24 @@ class global {
     this.udid = deviceId;
 
     if (this.udid == null) {
-      // generate uuid
-      try {
-        this.uuid = await UniqueIds.uuid;
-        print('=======uuid : $uuid');
-      } on PlatformException {
-        this.uuid = 'Failed to get uuid.';
-      }
-
-      // get adid(idfa)
-      try {
-        this.adid = await UniqueIds.adId;
-        print('=======adId : $adid');
-      } on PlatformException {
-        this.adid = 'Failed to get adId.';
-      }
-    } else {
-      print('=======udid : $udid');
+      this.udid = "0000";
+    //   // generate uuid
+    //   try {
+    //     this.uuid = await UniqueIds.uuid;
+    //     print('=======uuid : $uuid');
+    //   } on PlatformException {
+    //     this.uuid = 'Failed to get uuid.';
+    //   }
+    //
+    //   // get adid(idfa)
+    //   try {
+    //     this.adid = await UniqueIds.adId;
+    //     print('=======adId : $adid');
+    //   } on PlatformException {
+    //     this.adid = 'Failed to get adId.';
+    //   }
+    // } else {
+    //   print('=======udid : $udid');
     }
 
     //获取设备

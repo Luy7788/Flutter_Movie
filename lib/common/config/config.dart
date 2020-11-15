@@ -3,7 +3,8 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 
 class Config {
-  static final isRelease = (kIsWeb == true ? false : bool.fromEnvironment('dart.vm.product'));
+  static final isRelease = (kIsWeb == true ? false : bool.fromEnvironment(
+      'dart.vm.product'));
 
   static final isIOS = Platform.isIOS;
 
@@ -35,7 +36,7 @@ class Config {
   static const PREFS_MOVIE_PORGRESS = "prefsMovieProgress"; //观看进度
 
   //AES
-  static const AES_KEY = "";//需要获取加密请私信
+  static const AES_KEY = ""; //需要获取加密请私信
   static const AES_IV = "";
 
   //admob
@@ -43,15 +44,11 @@ class Config {
 
   static const ADMOB_APP_ID_Android = "";
 
-  static const ADMOB_Banner_UnitID_iOS =
-      "";
+  static const ADMOB_Banner_UnitID_iOS = "";
 
-  static const ADMOB_Banner_UnitID_Android =
-      "";
+  static const ADMOB_Banner_UnitID_Android = "";
 
-  static const ADMOB_Interstitial_UnitID_iOS =
-      "";
+  static const ADMOB_Interstitial_UnitID_iOS = "";
 
-  static const ADMOB_Interstitial_UnitID_Android =
-      "";
+  static const ADMOB_Interstitial_UnitID_Android = "";
 }

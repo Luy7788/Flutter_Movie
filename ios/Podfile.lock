@@ -1,47 +1,6 @@
 PODS:
-  - admob_flutter (0.3.4):
-    - Firebase/AdMob
-    - Firebase/Analytics
-    - FirebaseAnalytics (~> 6.1.3)
-    - Flutter
-    - Google-Mobile-Ads-SDK (~> 7.50)
   - device_info (0.0.1):
     - Flutter
-  - Firebase/AdMob (6.13.0):
-    - Firebase/CoreOnly
-    - Google-Mobile-Ads-SDK (~> 7.50)
-  - Firebase/Analytics (6.13.0):
-    - Firebase/Core
-  - Firebase/Core (6.13.0):
-    - Firebase/CoreOnly
-    - FirebaseAnalytics (= 6.1.6)
-  - Firebase/CoreOnly (6.13.0):
-    - FirebaseCore (= 6.4.0)
-  - FirebaseAnalytics (6.1.6):
-    - FirebaseCore (~> 6.4)
-    - FirebaseInstanceID (~> 4.2)
-    - GoogleAppMeasurement (= 6.1.6)
-    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
-    - GoogleUtilities/MethodSwizzler (~> 6.0)
-    - GoogleUtilities/Network (~> 6.0)
-    - "GoogleUtilities/NSData+zlib (~> 6.0)"
-    - nanopb (= 0.3.9011)
-  - FirebaseCore (6.4.0):
-    - FirebaseCoreDiagnostics (~> 1.0)
-    - FirebaseCoreDiagnosticsInterop (~> 1.0)
-    - GoogleUtilities/Environment (~> 6.2)
-    - GoogleUtilities/Logger (~> 6.2)
-  - FirebaseCoreDiagnostics (1.1.2):
-    - FirebaseCoreDiagnosticsInterop (~> 1.0)
-    - GoogleDataTransportCCTSupport (~> 1.0)
-    - GoogleUtilities/Environment (~> 6.2)
-    - GoogleUtilities/Logger (~> 6.2)
-    - nanopb (~> 0.3.901)
-  - FirebaseCoreDiagnosticsInterop (1.1.0)
-  - FirebaseInstanceID (4.2.7):
-    - FirebaseCore (~> 6.0)
-    - GoogleUtilities/Environment (~> 6.0)
-    - GoogleUtilities/UserDefaults (~> 6.0)
   - Flutter (1.0.0)
   - flutter_ijkplayer (0.0.1):
     - Flutter
@@ -54,61 +13,19 @@ PODS:
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
-  - Google-Mobile-Ads-SDK (7.53.0):
-    - GoogleAppMeasurement (~> 6.0)
-  - GoogleAppMeasurement (6.1.6):
-    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
-    - GoogleUtilities/MethodSwizzler (~> 6.0)
-    - GoogleUtilities/Network (~> 6.0)
-    - "GoogleUtilities/NSData+zlib (~> 6.0)"
-    - nanopb (= 0.3.9011)
-  - GoogleDataTransport (3.2.0)
-  - GoogleDataTransportCCTSupport (1.2.2):
-    - GoogleDataTransport (~> 3.2)
-    - nanopb (~> 0.3.901)
-  - GoogleUtilities/AppDelegateSwizzler (6.3.2):
-    - GoogleUtilities/Environment
-    - GoogleUtilities/Logger
-    - GoogleUtilities/Network
-  - GoogleUtilities/Environment (6.3.2)
-  - GoogleUtilities/Logger (6.3.2):
-    - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (6.3.2):
-    - GoogleUtilities/Logger
-  - GoogleUtilities/Network (6.3.2):
-    - GoogleUtilities/Logger
-    - "GoogleUtilities/NSData+zlib"
-    - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (6.3.2)"
-  - GoogleUtilities/Reachability (6.3.2):
-    - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (6.3.2):
-    - GoogleUtilities/Logger
-  - nanopb (0.3.9011):
-    - nanopb/decode (= 0.3.9011)
-    - nanopb/encode (= 0.3.9011)
-  - nanopb/decode (0.3.9011)
-  - nanopb/encode (0.3.9011)
   - package_info (0.0.1):
     - Flutter
   - path_provider (0.0.1):
     - Flutter
   - shared_preferences (0.0.1):
     - Flutter
-  - shared_preferences_macos (0.0.1):
+  - sqflite (0.0.2):
     - Flutter
-  - shared_preferences_web (0.0.1):
-    - Flutter
-  - sqflite (0.0.1):
-    - Flutter
-    - FMDB (~> 2.7.2)
-  - unique_ids (0.0.1):
-    - Flutter
+    - FMDB (>= 2.7.5)
   - wakelock (0.0.1):
     - Flutter
 
 DEPENDENCIES:
-  - admob_flutter (from `.symlinks/plugins/admob_flutter/ios`)
   - device_info (from `.symlinks/plugins/device_info/ios`)
   - Flutter (from `Flutter`)
   - flutter_ijkplayer (from `.symlinks/plugins/flutter_ijkplayer/ios`)
@@ -117,32 +34,15 @@ DEPENDENCIES:
   - package_info (from `.symlinks/plugins/package_info/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
-  - shared_preferences_macos (from `.symlinks/plugins/shared_preferences_macos/ios`)
-  - shared_preferences_web (from `.symlinks/plugins/shared_preferences_web/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
-  - unique_ids (from `.symlinks/plugins/unique_ids/ios`)
   - wakelock (from `.symlinks/plugins/wakelock/ios`)
 
 SPEC REPOS:
   trunk:
-    - Firebase
-    - FirebaseAnalytics
-    - FirebaseCore
-    - FirebaseCoreDiagnostics
-    - FirebaseCoreDiagnosticsInterop
-    - FirebaseInstanceID
     - FlutterIJK
     - FMDB
-    - Google-Mobile-Ads-SDK
-    - GoogleAppMeasurement
-    - GoogleDataTransport
-    - GoogleDataTransportCCTSupport
-    - GoogleUtilities
-    - nanopb
 
 EXTERNAL SOURCES:
-  admob_flutter:
-    :path: ".symlinks/plugins/admob_flutter/ios"
   device_info:
     :path: ".symlinks/plugins/device_info/ios"
   Flutter:
@@ -159,47 +59,25 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/path_provider/ios"
   shared_preferences:
     :path: ".symlinks/plugins/shared_preferences/ios"
-  shared_preferences_macos:
-    :path: ".symlinks/plugins/shared_preferences_macos/ios"
-  shared_preferences_web:
-    :path: ".symlinks/plugins/shared_preferences_web/ios"
   sqflite:
     :path: ".symlinks/plugins/sqflite/ios"
-  unique_ids:
-    :path: ".symlinks/plugins/unique_ids/ios"
   wakelock:
     :path: ".symlinks/plugins/wakelock/ios"
 
 SPEC CHECKSUMS:
-  admob_flutter: 8033bcca85371a0554aa99d525a83a4770e679f0
-  device_info: cbf09d2ec12aa7110e0b09fabe54b5bd6c8efe74
-  Firebase: 458d109512200d1aca2e1b9b6cf7d68a869a4a46
-  FirebaseAnalytics: 45f36d9c429fc91d206283900ab75390cd05ee8a
-  FirebaseCore: 307ea2508df730c5865334e41965bd9ea344b0e5
-  FirebaseCoreDiagnostics: 511f4f3ed7d440bb69127e8b97c2bc8befae639e
-  FirebaseCoreDiagnosticsInterop: e9b1b023157e3a2fc6418b5cb601e79b9af7b3a0
-  FirebaseInstanceID: ebd2ea79ee38db0cb5f5167b17a0d387e1cc7b6e
+  device_info: d7d233b645a32c40dfdc212de5cf646ca482f175
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   flutter_ijkplayer: ef9006131553deb6d8ae6d7fbd3bcbf93b135930
   flutter_webview_plugin: ed9e8a6a96baf0c867e90e1bce2673913eeac694
   FlutterIJK: 68b00c1d11162b5016f3611853aa699e198bd1d2
   fluttertoast: b644586ef3b16f67fae9a1f8754cef6b2d6b634b
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  Google-Mobile-Ads-SDK: 4b855e61f9c5a1a97cb55734ea372a4c36d00242
-  GoogleAppMeasurement: dfe55efa543e899d906309eaaac6ca26d249862f
-  GoogleDataTransport: 8e9b210c97d55fbff306cc5468ff91b9cb32dcf5
-  GoogleDataTransportCCTSupport: ef79a4728b864946a8aafdbab770d5294faf3b5f
-  GoogleUtilities: 547a86735c6f0ee30ad17e94df4fc21f616b71cb
-  nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
-  package_info: 48b108e75b8802c2d5e126f208ef540561c98aef
-  path_provider: fb74bd0465e96b594bb3b5088ee4a4e7bb1f2a9d
-  shared_preferences: 430726339841afefe5142b9c1f50cb6bd7793e01
-  shared_preferences_macos: f3f29b71ccbb56bf40c9dd6396c9acf15e214087
-  shared_preferences_web: 141cce0c3ed1a1c5bf2a0e44f52d31eeb66e5ea9
-  sqflite: 4001a31ff81d210346b500c55b17f4d6c7589dd0
-  unique_ids: ef44e3cfefac2a3923540e4914eb5bc20eacd043
-  wakelock: da5012e206ec8978df58d8642e4cdd4fe506185f
+  package_info: 873975fc26034f0b863a300ad47e7f1ac6c7ec62
+  path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
+  shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
+  sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
+  wakelock: 0d4a70faf8950410735e3f61fb15d517c8a6efc4
 
-PODFILE CHECKSUM: 1b66dae606f75376c5f2135a8290850eeb09ae83
+PODFILE CHECKSUM: 46304a4583a8b4e9f926d704b33fe706ccec86df
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.0
