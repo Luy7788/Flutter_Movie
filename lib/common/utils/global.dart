@@ -1,8 +1,11 @@
+import 'dart:collection';
+
 import 'package:flutter/foundation.dart';
 import 'package:nmtv/common/model/eventBusModes.dart';
 import 'package:nmtv/common/model/movieDetailModel.dart';
 import 'package:nmtv/common/model/movieListModel.dart';
 import 'package:nmtv/common/utils/toast.dart';
+
 // import 'package:unique_ids/unique_ids.dart';
 // import 'package:flutter/services.dart';
 import 'package:package_info/package_info.dart';
@@ -65,7 +68,7 @@ class global {
     if (Config.isIOS == true) {
       IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
       return iosDeviceInfo.identifierForVendor; // unique ID on iOS
-    } else if (Config.isAndroid == true)  {
+    } else if (Config.isAndroid == true) {
       AndroidDeviceInfo androidDeviceInfo = await deviceInfo.androidInfo;
       return androidDeviceInfo.androidId; // unique ID on Android
     } else {
@@ -83,23 +86,23 @@ class global {
 
     if (this.udid == null) {
       this.udid = "0000";
-    //   // generate uuid
-    //   try {
-    //     this.uuid = await UniqueIds.uuid;
-    //     print('=======uuid : $uuid');
-    //   } on PlatformException {
-    //     this.uuid = 'Failed to get uuid.';
-    //   }
-    //
-    //   // get adid(idfa)
-    //   try {
-    //     this.adid = await UniqueIds.adId;
-    //     print('=======adId : $adid');
-    //   } on PlatformException {
-    //     this.adid = 'Failed to get adId.';
-    //   }
-    // } else {
-    //   print('=======udid : $udid');
+      //   // generate uuid
+      //   try {
+      //     this.uuid = await UniqueIds.uuid;
+      //     print('=======uuid : $uuid');
+      //   } on PlatformException {
+      //     this.uuid = 'Failed to get uuid.';
+      //   }
+      //
+      //   // get adid(idfa)
+      //   try {
+      //     this.adid = await UniqueIds.adId;
+      //     print('=======adId : $adid');
+      //   } on PlatformException {
+      //     this.adid = 'Failed to get adId.';
+      //   }
+      // } else {
+      //   print('=======udid : $udid');
     }
 
     //获取设备
@@ -112,7 +115,8 @@ class global {
       //android相关代码
       this.androidInfo = await deviceInfo.androidInfo;
       print('Running on androidInfo: ${androidInfo.model}');
-      print('Running on androidInfo version: ${this.androidInfo.version.release} ');
+      print(
+          'Running on androidInfo version: ${this.androidInfo.version.release} ');
       print('Running on androidInfo: id:${this.androidInfo.androidId}');
     } else {
       print("不是安卓和iOS");
@@ -122,8 +126,10 @@ class global {
     this.prefs = await SharedPreferences.getInstance();
     _getCache();
 
-    HTTP.dioGet(API.getBaseUrl).then((result){
-      if (result != null && result.length>1 && result.contains("#")==false) {
+    HTTP.dioGet(API.getBaseUrl).then((result) {
+      if (result != null &&
+          result.length > 1 &&
+          result.contains("#") == false) {
         print('---------------------使用这个地址');
         this.newBaseUrl = result;
         this.prefs.setString(result, Config.PREFS_BASE_URL);
@@ -218,7 +224,7 @@ class global {
 
   //保存首页列表
   void saveHomeList(List<movieListModel> homeList) {
-    if(kIsWeb == true) {
+    if (kIsWeb == true) {
       return;
     }
     List<String> itemList = List();
@@ -235,7 +241,7 @@ class global {
 
   //保存搜索历史
   void saveSearchHistory(List<String> history) {
-    if(kIsWeb == true) {
+    if (kIsWeb == true) {
       return;
     }
     this.prefs.setStringList(Config.PREFS_SEARCH, history).then((isSave) {
@@ -245,7 +251,7 @@ class global {
 
   //保存观看历史
   void saveMovieHistroy(movieDetailModel model) {
-    if(kIsWeb == true) {
+    if (kIsWeb == true) {
       return;
     }
     for (movieDetailModel item in this.footmarkListCache) {
@@ -271,7 +277,7 @@ class global {
 
   //清除足迹
   void cleanAllFootmark() {
-    if(kIsWeb == true) {
+    if (kIsWeb == true) {
       return;
     }
     this.footmarkListCache.clear();
@@ -323,8 +329,37 @@ class global {
   void getAppConfig() {
     //请求
     HTTP.get(API.config).then((response) {
+      //FIXME:TEST
+      if (response == null) {
+        response = {
+          "code": 0,
+          "msg": "请求成功",
+          "data": {
+            "startup_banner": "",
+            "search": [
+              "神盾局特工",
+              "行尸走肉",
+              "越狱",
+              "硅谷",
+              "生活大爆炸",
+              "老友记",
+              "绿箭侠",
+              "闪电侠"
+            ],
+            "search_ph": "",
+            "enable_cache": true,
+            "enable_review": true,
+            "startup_msg": null,
+            "js":
+                "99OTxgZdap44ZyM/riJ5GihZ8uvNV1wADCvTzvz44zHD947MuggbOFDBx+3+4HB7VTABp6hkayMaDbS1DJRFPhv0L2ndw9I6dRrWdbta95m8Lhl5T11XG6YykTFCoxDWEgO5po1AEVGRseM6z7kyUp9FP1fFQfyiXDLoOukbOKT6wEejtt/w/WrWE82Cc8njO4HjmSD3CT60hk3sUuQcRtCmDerk5S03VZQN6rhvG/V6vshzWUWmEsZoZ2Kl2kHYV6n6k2yLlHWgqU0lMZ0JqGiG3OIxC8qvASgLt8ptamdw0/Id3y/oeTbBJNMyx3jOjl4O7JXIv9G8blxWXFXNbl+iBFC5zr9v65jXLoXEiR0j7iDViB/IeJP7Js82XXJFJyjjzvCGO1YuPoaBjtq0cLhLyBSGrXqIPFd+0wHUji0=",
+            "category": ["美剧", "英剧", "韩剧", "日剧"],
+            "tags": ["剧情", "动作", "科幻", "喜剧", "悬疑", "爱情", "惊悚", "犯罪", "战争", "冒险"]
+          }
+        };
+      }
       if (response != null) {
-        configModel model = configModel.fromJson(response["data"]);
+        var data = new Map<String, dynamic>.from(response["data"]);
+        configModel model = configModel.fromJson(data);
         this.config = model;
         print('=======API.config response - success');
         //通知刷新
@@ -392,7 +427,20 @@ class global {
           jsonList.map((item) => movieListModel.fromJson(item)).toList();
       return modelList;
     } else {
-      return List();
+      //FIXME:TEST
+      List<movieListModel> _list = List<movieListModel>();
+      for (int i = 0; i < pagesize; i++) {
+        var _temp = movieListModel()
+          ..id = i
+          ..title = "姜子牙之大圣归来$i"
+          ..cover =
+              "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2621219978.webp"
+          ..episodeNewest = 12
+          ..episodeTotal = 24
+          ..score = (50 + i)/10;
+        _list.add(_temp);
+      }
+      return _list;
     }
   }
 

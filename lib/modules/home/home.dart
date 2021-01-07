@@ -127,11 +127,7 @@ class _homePageState extends State<homePage>
           isCanScroll: true,
           scrollController: this._scrollController,
         ),
-      ),
-//      body: ListView(
-//        children: <Widget>[
-//        ],
-//      ),
+      ), 
     );
   }
 

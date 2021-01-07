@@ -35,9 +35,9 @@ class Config {
   static const PREFS_HOME_LIST = "prefsHomeList"; //首页列表
   static const PREFS_MOVIE_PORGRESS = "prefsMovieProgress"; //观看进度
 
-  //AES
-  static const AES_KEY = ""; //需要获取加密请私信
-  static const AES_IV = "";
+  //AES加密
+  static const AES_KEY = "PJG\$gxArz756xxxx";
+  static const AES_IV = "FObm2IoTriHJxxxx";
 
   //admob
   static const ADMOB_APP_ID_iOS = "";
