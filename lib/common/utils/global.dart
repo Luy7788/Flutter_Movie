@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:flutter/foundation.dart';
 import 'package:nmtv/common/model/eventBusModes.dart';
 import 'package:nmtv/common/model/movieDetailModel.dart';
@@ -414,6 +412,22 @@ class global {
       String keyword,
       int pageNum = 1,
       int pagesize = Config.PAGE_SIZE}) async {
+    //FIXME:TEST
+    await Future.delayed(Duration(seconds: 2));
+    List<movieListModel> _list = List<movieListModel>();
+    for (int i = 0; i < pagesize; i++) {
+      var _temp = movieListModel()
+        ..id = i
+        ..title = "葫芦娃大战变形金刚$i"
+        ..cover =
+            "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2621219978.webp"
+        ..episodeNewest = 12
+        ..episodeTotal = 24
+        ..score = (50 + i) / 10;
+      _list.add(_temp);
+    }
+    return _list;
+
     var mapData = Map();
     if (category.length > 0 && category != '全部') mapData['category'] = category;
     if (keyword.length > 0 && keyword != '全部') mapData['keyword'] = keyword;
@@ -427,25 +441,60 @@ class global {
           jsonList.map((item) => movieListModel.fromJson(item)).toList();
       return modelList;
     } else {
-      //FIXME:TEST
-      List<movieListModel> _list = List<movieListModel>();
-      for (int i = 0; i < pagesize; i++) {
-        var _temp = movieListModel()
-          ..id = i
-          ..title = "姜子牙之大圣归来$i"
-          ..cover =
-              "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2621219978.webp"
-          ..episodeNewest = 12
-          ..episodeTotal = 24
-          ..score = (50 + i)/10;
-        _list.add(_temp);
-      }
-      return _list;
+      return List();
     }
   }
 
   //获取影视详情
   Future movieDetail(int movieId) async {
+    //FIXME:TEST
+    await Future.delayed(Duration(seconds: 2));
+    movieDetailModel temp = movieDetailModel()
+      ..movieID = movieId
+      ..episodeTotal = 21
+      ..title = "葫芦娃大战变形金刚"
+      ..director = "孙悟空"
+      ..screenwriter = "唐三藏"
+      ..mainActors = "大娃、二娃、三娃、四娃、五娃、六娃"
+      ..region = "中国"
+      ..language = "中文、英文"
+      ..releaseTime = "2021年1月"
+      ..tags = "喜剧"
+      ..summary =
+          "穿山甲在误打误撞之中打穿了葫芦山，放跑了被镇压在山下的蝎子精和蛇精。焦急之中，穿山甲找到了爷爷，拜托爷爷种下七色葫芦，很快，七个颜色各异的大葫芦便结了出来"
+      ..site = "MJW"
+      ..cover =
+          "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2624607255.webp"
+      ..links = movieDetailModel.linksfromJson(Map<String, dynamic>.from({
+        //具体播放连接列表
+        "MJW": [
+          {
+            "site": "MJW", //站点
+            "lineIndex": 1, //线路
+            "episodeName": "第一集", // 第几集 或 电影清晰度(高清、蓝光)
+            "link": "https://91mjw.com/vplay/MjUxNi0xLTA=.html", //站点对应的播放连接
+            "realPlayLink": null //视频真实播放地址(AES加密, 暂无)
+          },
+          {
+            "site": "MJW", //站点
+            "lineIndex": 1, //线路
+            "episodeName": "第二集", // 第几集 或 电影清晰度(高清、蓝光)
+            "link": "https://91mjw.com/vplay/MjUxNi0xLTE=.html", //站点对应的播放连接
+            "realPlayLink": null //视频真实播放地址(AES加密, 暂无)
+          },
+          {
+            "site": "MJW", //站点
+            "lineIndex": 1, //线路
+            "episodeName": "第三集", // 第几集 或 电影清晰度(高清、蓝光)
+            "link": "https://91mjw.com/vplay/MjUxNi0xLTI=.html", //站点对应的播放连接
+            "realPlayLink": null //视频真实播放地址(AES加密, 暂无)
+          },
+        ]
+      }))
+      ..lastEpisodeIndex = 5
+      ..lastEpisodeName = "第五集";
+    return temp;
+
     var response = await HTTP.get(API.movieDetail + '/${movieId}');
     if (response != null) {
       var jsonData = response["data"];
@@ -459,6 +508,7 @@ class global {
 
   //上传历史
   void uploadHistory(String title, String episodeName, int movieID) async {
+    return;
     Map<String, dynamic> params = {
       "title": title,
       "episodeName": episodeName,
@@ -470,6 +520,7 @@ class global {
   }
 
   void uploadRealLink(String realLink, int linkId) async {
+    return;
     Map<String, dynamic> params = {
       "linkId": linkId,
       "link": realLink,

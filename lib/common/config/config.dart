@@ -36,8 +36,8 @@ class Config {
   static const PREFS_MOVIE_PORGRESS = "prefsMovieProgress"; //观看进度
 
   //AES加密
-  static const AES_KEY = "PJG\$gxArz756xxxx";
-  static const AES_IV = "FObm2IoTriHJxxxx";
+  static const AES_KEY = "PJG\$gxArz7569SEb";
+  static const AES_IV = "FObm2IoTriHJ9dVL";
 
   //admob
   static const ADMOB_APP_ID_iOS = "";

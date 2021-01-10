@@ -252,7 +252,7 @@ class _movieDetailState extends State<movieDetail>
         }
       });
       //开始计时
-      _countdown(20);
+      _countdown(30);
     } else {
       _webviewLoadUrl = null;
       _countTimer?.cancel();

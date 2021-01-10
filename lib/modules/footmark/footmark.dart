@@ -139,7 +139,7 @@ class _footmarkListState extends State<_footmarkList> {
                       children: <Widget>[
                         Positioned(
                           left: 0,
-//                      right: 0,
+                          right: 0,
                           bottom: 0,
                           top: 0,
                           child: Column(
@@ -161,10 +161,11 @@ class _footmarkListState extends State<_footmarkList> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+                                padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                                 child: Text(
                                   '主演：${model.mainActors}',
                                   textAlign: TextAlign.start,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ),
                               Padding(

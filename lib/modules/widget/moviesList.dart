@@ -75,17 +75,11 @@ class Programme extends StatelessWidget {
             child: Stack(
               fit: StackFit.passthrough,
               children: <Widget>[
-//                Image.network(
-//                  this.data.cover,
-//                  fit: BoxFit.cover,
-//                ),
                 CachedNetworkImage(
                   fit: BoxFit.cover,
                   placeholder: (context, url) => new Container(
                     child: new Center(
-                      child: new CircularProgressIndicator(
-//                        backgroundColor: Color(Config.THEME_COLOR),
-                          ),
+                      child: new CircularProgressIndicator(),
                     ),
                     width: 160.0,
                     height: 90.0,
@@ -100,7 +94,6 @@ class Programme extends StatelessWidget {
                     width: 40,
                     decoration: BoxDecoration(
                       color: Color(0xA0000000),
-//                      border: Border.all(),
                       borderRadius: BorderRadius.circular(3.0),
                     ),
                     alignment: Alignment.center,
@@ -175,7 +168,6 @@ class Programme extends StatelessWidget {
             //文本方向
             style: TextStyle(
               fontSize: 13.7,
-//              letterSpacing: 1.06,
               fontWeight: FontWeight.w400,
               height: 1.1,
               color: Color(0xFF333333),
