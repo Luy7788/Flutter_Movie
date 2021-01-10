@@ -124,17 +124,17 @@ class global {
     this.prefs = await SharedPreferences.getInstance();
     _getCache();
 
-    HTTP.dioGet(API.getBaseUrl).then((result) {
-      if (result != null &&
-          result.length > 1 &&
-          result.contains("#") == false) {
-        print('---------------------使用这个地址');
-        this.newBaseUrl = result;
-        this.prefs.setString(result, Config.PREFS_BASE_URL);
-      } else {
-        print('---------------------暂不使用这个地址');
-      }
-    });
+    // HTTP.dioGet(API.getBaseUrl).then((result) {
+    //   if (result != null &&
+    //       result.length > 1 &&
+    //       result.contains("#") == false) {
+    //     print('---------------------使用这个地址');
+    //     this.newBaseUrl = result;
+    //     this.prefs.setString(result, Config.PREFS_BASE_URL);
+    //   } else {
+    //     print('---------------------暂不使用这个地址');
+    //   }
+    // });
 
     //延时请求配置信息
     getAppConfig();

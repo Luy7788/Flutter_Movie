@@ -9,11 +9,11 @@ import 'package:nmtv/common/utils/UrlEncode.dart';
 
 class API {
   //API
-  static const basetUrl = "http://lemon.xjqxz.top";
+  static const basetUrl = "http://lemon.top";
 
 //  static const basetUrl = "http://localhost:7878";
 
-  static const getBaseUrl = "https://gitee.com/yzcai/static/raw/master/domain";
+  static const getBaseUrl = "https://gitee.com/";
 
   //获取ip
   static const getIP = "http://ip.taobao.com/service/getIpInfo.php?ip=myip";
