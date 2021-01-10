@@ -9,15 +9,15 @@ import 'dart:async';
 import 'package:nmtv/common/utils/global.dart';
 import 'package:nmtv/common/model/configModel.dart';
 
-class homePage extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  _homePageState createState() => _homePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _homePageState extends State<homePage>
+class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
-  List<movieListModel> _movieItems = Global.homeListCache;
+  List<MovieListModel> _movieItems = Global.homeListCache;
   var listCountrys = ["全部"]; //美剧", "韩剧", "电影"
   var listCategory = ["全部"]; //剧情", "动作", "科幻", "喜剧",
   int _currentPageNum = 1; //分页
@@ -40,7 +40,7 @@ class _homePageState extends State<homePage>
     _refresh();
     //监听通知
     _configSubscriptionConfig =
-        Global.eventBus.on<configModel>().listen((event) {
+        Global.eventBus.on<ConfigModel>().listen((event) {
       print("configSubscription 接收到eventBus 通知");
       setState(() {
         this._currentCountryIndex = 0;
@@ -86,7 +86,7 @@ class _homePageState extends State<homePage>
     if (movieList.length > 0) {
       Global.saveHomeList(movieList);
     } else if (this._currentPageNum == 1) {
-      toast.show('暂无数据');
+      Toast.show('暂无数据');
     }
   }
 

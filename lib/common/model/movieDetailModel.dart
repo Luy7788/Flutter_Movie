@@ -1,4 +1,4 @@
-class movieDetailModel {
+class MovieDetailModel {
   String director; //导演
   String screenwriter; //编剧
   int episodeTotal; //总集数(>0展示)
@@ -17,7 +17,7 @@ class movieDetailModel {
   int movieID; //id
   String cover; //封面
 
-  movieDetailModel({
+  MovieDetailModel({
     this.director,
     this.episodeTotal,
     this.language,
@@ -36,8 +36,8 @@ class movieDetailModel {
     this.cover,
   });
 
-  factory movieDetailModel.fromJson(Map<String, dynamic> json) {
-    return movieDetailModel(
+  factory MovieDetailModel.fromJson(Map<String, dynamic> json) {
+    return MovieDetailModel(
       director: json['director'],
       episodeTotal: json['episodeTotal'],
       screenwriter: json['screenwriter'],

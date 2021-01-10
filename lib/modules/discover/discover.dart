@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:nmtv/common/config/config.dart';
 import 'package:nmtv/common/model/eventBusModes.dart';
-import 'package:nmtv/modules/discover/searchResult.dart';
-import 'package:nmtv/common/config/adapt.dart';
 import 'package:nmtv/common/utils/navigation.dart';
 import 'package:nmtv/common/utils/global.dart';
 import 'package:nmtv/common/model/configModel.dart';
 import 'dart:async';
 
-class discoverPage extends StatefulWidget {
+class DiscoverPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => discoverPageState();
+  State<StatefulWidget> createState() => DiscoverPageState();
 }
 
-class discoverPageState extends State<discoverPage> {
+class DiscoverPageState extends State<DiscoverPage> {
   StreamSubscription _configSubscriptionConfig; //信号1
   StreamSubscription _configSubscriptionSearch; //信号2
   List<String> _hotTextList = []; //热门搜索
@@ -40,14 +38,14 @@ class discoverPageState extends State<discoverPage> {
     }
     //监听通知
     _configSubscriptionConfig =
-        Global.eventBus.on<configModel>().listen((event) {
+        Global.eventBus.on<ConfigModel>().listen((event) {
       print("configSubscription 接收到eventBus 搜索关键词 通知");
       setState(() {
         _hotTextList = event.search;
       });
     });
     _configSubscriptionSearch =
-        Global.eventBus.on<eventBusCache>().listen((event) {
+        Global.eventBus.on<EventBusCache>().listen((event) {
       print("_configSubscriptionSearch 接收到eventBus 历史 通知");
       setState(() {
         _searchTextList = event.searchTextList;
@@ -145,7 +143,6 @@ class TextFieldWidget extends StatelessWidget {
           print("点击搜索 ：${val}");
           callback(val);
         },
-//        textInputAction: TextInputAction.next,
         textInputAction: TextInputAction.search,
         // 默认设置
         decoration: InputDecoration(
@@ -172,7 +169,6 @@ class TextFieldWidget extends StatelessWidget {
       height: 36,
       padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
       child: Row(
-//        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Expanded(
             child: buildTextField(context),

@@ -5,7 +5,7 @@ import 'package:nmtv/common/model/movieListModel.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class MoviesList extends StatelessWidget {
-  List<movieListModel> movieItems = List();
+  List<MovieListModel> movieItems = List();
   bool isCanScroll = true;
   double inset = 10;
   ScrollController scrollController = ScrollController();
@@ -47,7 +47,7 @@ class MoviesList extends StatelessWidget {
           child: GestureDetector(
             behavior: HitTestBehavior.opaque, //包括其他区域的点击
             onTap: () {
-              movieListModel model = this.movieItems[index];
+              MovieListModel model = this.movieItems[index];
               print(model.title);
               Navigation.pushMovieDetail(context, model.id, model);
             },
@@ -60,7 +60,7 @@ class MoviesList extends StatelessWidget {
 }
 
 class Programme extends StatelessWidget {
-  final movieListModel data;
+  final MovieListModel data;
 
   const Programme({Key key, this.data}) : super(key: key);
 

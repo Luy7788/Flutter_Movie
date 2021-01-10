@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:nmtv/common/config/adapt.dart';
-import 'package:nmtv/common/config/config.dart';
 import 'package:nmtv/common/utils/global.dart';
 import 'package:nmtv/common/utils/toast.dart';
 
-class feedback extends StatefulWidget {
-  feedback({Key key}) : super(key: key);
+class MyFeedback extends StatefulWidget {
+  MyFeedback({Key key}) : super(key: key);
 
   @override
-  _feedbackState createState() {
-    return _feedbackState();
+  _MyFeedbackState createState() {
+    return _MyFeedbackState();
   }
 }
 
-class _feedbackState extends State<feedback> {
-
+class _MyFeedbackState extends State<MyFeedback> {
   String _feedback;
   String _contact;
 
@@ -60,11 +58,7 @@ class _feedbackState extends State<feedback> {
 //                labelText: '请留下您的意见：',
 //                helperText: '请留下您的意见：',
                     hintText: '您的意见',
-                    border: OutlineInputBorder(
-//                      borderSide: BorderSide(
-//                        color: Colors.green,
-//                      ),
-                        ),
+                    border: OutlineInputBorder(),
                   ),
                   //监听文字改变
                   onChanged: (val) {
@@ -97,13 +91,8 @@ class _feedbackState extends State<feedback> {
                       fontSize: 12,
                       height: 1.2,
                     ),
-//                helperText: 'QQ/邮箱/手机号',
                     hintText: 'QQ / 邮箱 / 手机号',
-                    border: OutlineInputBorder(
-//                      borderSide: BorderSide(
-//                        color: Colors.green,
-//                      ),
-                        ),
+                    border: OutlineInputBorder(),
                   ),
                   //监听文字改变
                   onChanged: (val) {
@@ -123,19 +112,18 @@ class _feedbackState extends State<feedback> {
                   width: Adapt.screenW() - 20,
                   child: RaisedButton(
                     child: Text('提交'),
-//                    color: Color(Config.THEME_COLOR),
                     color: Colors.yellow.shade600,
                     textColor: Colors.white,
                     splashColor: Colors.yellow.shade300,
                     onPressed: () {
-                      if(this._feedback.length == 0) {
-                        toast.show('请输入您的意见');
+                      if (this._feedback.length == 0) {
+                        Toast.show('请输入您的意见');
                         return;
                       } else {
-                        Global.uploadFeedback(this._feedback, this._contact).then((value) {
+                        Global.uploadFeedback(this._feedback, this._contact)
+                            .then((value) {
                           if (value == true) {
-//                            Navigator.pop(context);
-                            toast.show('提交成功');
+                            Toast.show('提交成功');
                             Navigator.of(context).pop();
                           }
                         });

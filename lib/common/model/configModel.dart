@@ -1,4 +1,4 @@
-class configModel {
+class ConfigModel {
   String startupBanner;
   String searchPh;
   String js;
@@ -10,9 +10,9 @@ class configModel {
   List<String> search;
   List<String> tags;
 
-  configModel({this.startupBanner, this.searchPh, this.js, this.enableCache, this.enableReview, this.startupMsg, this.category, this.search, this.tags});
+  ConfigModel({this.startupBanner, this.searchPh, this.js, this.enableCache, this.enableReview, this.startupMsg, this.category, this.search, this.tags});
 
-  configModel.fromJson(Map<String, dynamic> json) {    
+  ConfigModel.fromJson(Map<String, dynamic> json) {    
     this.startupBanner = json['startup_banner'];
     this.searchPh = json['search_ph'];
     this.js = json['js'];

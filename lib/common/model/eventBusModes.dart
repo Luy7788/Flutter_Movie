@@ -1,16 +1,16 @@
 import 'movieDetailModel.dart';
 import 'movieListModel.dart';
 
-class eventBusBannerAd {
+class EventBusBannerAd {
   bool isShow;
 }
 
-class eventBusAlertAd {
+class EventBusAlertAd {
   bool isShow;
 }
 
-class eventBusCache {
+class EventBusCache {
   List<String> searchTextList; //搜索历史列表
-  List<movieDetailModel> footmarkList;
-  List<movieListModel> homeList;
+  List<MovieDetailModel> footmarkList;
+  List<MovieListModel> homeList;
 }

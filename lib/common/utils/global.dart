@@ -37,11 +37,11 @@ class global {
   ///通用数据数据
   EventBus eventBus = new EventBus(); //建一个全局用的通知
   SharedPreferences prefs; //缓存
-  configModel config; //获取的配置信息
+  ConfigModel config; //获取的配置信息
   Map<String, dynamic> js; //aes加密后的json
   List<String> searchListCache = List(); //搜索
-  List<movieDetailModel> footmarkListCache = List(); //足迹
-  List<movieListModel> homeListCache = List(); //首页数据缓存
+  List<MovieDetailModel> footmarkListCache = List(); //足迹
+  List<MovieListModel> homeListCache = List(); //首页数据缓存
   Map<String, dynamic> movieProgressCache = Map(); //观看进度缓存
 
   // 单例公开访问点
@@ -146,7 +146,7 @@ class global {
 
   //获取缓存
   void _getCache() {
-    eventBusCache eventCache = eventBusCache();
+    EventBusCache eventCache = EventBusCache();
 
     //获取缓存配置
     var configModelString = this.prefs.getString(Config.PREFS_CONFIG);
@@ -154,7 +154,7 @@ class global {
       print('=======初始化配置 获取缓存配置: ${getTypeName(configModelString)}');
       Map<String, dynamic> configModelJson = json.decode(configModelString);
       print('=======初始化配置 转 json: ${configModelJson}');
-      this.config = configModel.fromJson(configModelJson);
+      this.config = ConfigModel.fromJson(configModelJson);
       //获取js
       getModelJS();
       //通知-刷新
@@ -173,10 +173,10 @@ class global {
     List<String> _movieStringHistory =
         this.prefs.getStringList(Config.PREFS_FOOTMARK);
     if (_movieStringHistory != null) {
-      List<movieDetailModel> _movieHistory = List();
+      List<MovieDetailModel> _movieHistory = List();
       for (String item in _movieStringHistory) {
         Map<String, dynamic> jsonModel = json.decode(item);
-        movieDetailModel model = movieDetailModel.fromJson(jsonModel);
+        MovieDetailModel model = MovieDetailModel.fromJson(jsonModel);
         _movieHistory.add(model);
       }
       this.footmarkListCache = _movieHistory;
@@ -187,10 +187,10 @@ class global {
     //获取首页缓存
     List<String> _homeMovies = this.prefs.getStringList(Config.PREFS_HOME_LIST);
     if (_homeMovies != null) {
-      List<movieListModel> _homeHistory = List();
+      List<MovieListModel> _homeHistory = List();
       for (String item in _homeMovies) {
         Map<String, dynamic> jsonModel = json.decode(item);
-        movieListModel model = movieListModel.fromJson(jsonModel);
+        MovieListModel model = MovieListModel.fromJson(jsonModel);
         _homeHistory.add(model);
       }
       this.homeListCache = _homeHistory;
@@ -221,12 +221,12 @@ class global {
   }
 
   //保存首页列表
-  void saveHomeList(List<movieListModel> homeList) {
+  void saveHomeList(List<MovieListModel> homeList) {
     if (kIsWeb == true) {
       return;
     }
     List<String> itemList = List();
-    for (movieListModel item in homeList) {
+    for (MovieListModel item in homeList) {
       //转字符串保存
       String itemString = jsonEncode(item.toJson());
 //      itemList.insert(0, itemString);
@@ -248,11 +248,11 @@ class global {
   }
 
   //保存观看历史
-  void saveMovieHistroy(movieDetailModel model) {
+  void saveMovieHistroy(MovieDetailModel model) {
     if (kIsWeb == true) {
       return;
     }
-    for (movieDetailModel item in this.footmarkListCache) {
+    for (MovieDetailModel item in this.footmarkListCache) {
       if (item.movieID == model.movieID) {
         this.footmarkListCache.remove(item);
         break;
@@ -263,7 +263,7 @@ class global {
       this.footmarkListCache.removeLast();
     }
     List<String> movieList = List();
-    for (movieDetailModel item in this.footmarkListCache) {
+    for (MovieDetailModel item in this.footmarkListCache) {
       //转字符串保存
       String itemString = jsonEncode(item.toJson());
       movieList.add(itemString);
@@ -289,7 +289,7 @@ class global {
 //    if (this.movieProgressCache.containsKey(movieID) == true) {
 //      int current =
 //    }
-    for (movieDetailModel item in this.footmarkListCache) {
+    for (MovieDetailModel item in this.footmarkListCache) {
       if (item.movieID == movieID) {
         return item.lastEpisodeIndex;
       }
@@ -357,7 +357,7 @@ class global {
       }
       if (response != null) {
         var data = new Map<String, dynamic>.from(response["data"]);
-        configModel model = configModel.fromJson(data);
+        ConfigModel model = ConfigModel.fromJson(data);
         this.config = model;
         print('=======API.config response - success');
         //通知刷新
@@ -380,13 +380,13 @@ class global {
             case 1:
               break;
             case 2:
-              toast.show(model.startupMsg.msg);
+              Toast.show(model.startupMsg.msg);
               break;
             case 3:
-              alert.show(model.startupMsg.msg);
+              Alert.show(model.startupMsg.msg);
               break;
             case 4:
-              alert.showWithoutDismiss(model.startupMsg.msg);
+              Alert.showWithoutDismiss(model.startupMsg.msg);
               break;
             default:
               break;
@@ -414,9 +414,9 @@ class global {
       int pagesize = Config.PAGE_SIZE}) async {
     //FIXME:TEST
     await Future.delayed(Duration(seconds: 2));
-    List<movieListModel> _list = List<movieListModel>();
+    List<MovieListModel> _list = List<MovieListModel>();
     for (int i = 0; i < pagesize; i++) {
-      var _temp = movieListModel()
+      var _temp = MovieListModel()
         ..id = i
         ..title = "葫芦娃大战变形金刚$i"
         ..cover =
@@ -438,7 +438,7 @@ class global {
     if (response != null) {
       List jsonList = response["data"];
       List modelList =
-          jsonList.map((item) => movieListModel.fromJson(item)).toList();
+          jsonList.map((item) => MovieListModel.fromJson(item)).toList();
       return modelList;
     } else {
       return List();
@@ -449,7 +449,7 @@ class global {
   Future movieDetail(int movieId) async {
     //FIXME:TEST
     await Future.delayed(Duration(seconds: 2));
-    movieDetailModel temp = movieDetailModel()
+    MovieDetailModel temp = MovieDetailModel()
       ..movieID = movieId
       ..episodeTotal = 21
       ..title = "葫芦娃大战变形金刚"
@@ -465,7 +465,7 @@ class global {
       ..site = "MJW"
       ..cover =
           "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2624607255.webp"
-      ..links = movieDetailModel.linksfromJson(Map<String, dynamic>.from({
+      ..links = MovieDetailModel.linksfromJson(Map<String, dynamic>.from({
         //具体播放连接列表
         "MJW": [
           {
@@ -499,7 +499,7 @@ class global {
     if (response != null) {
       var jsonData = response["data"];
       if (jsonData != null) {}
-      movieDetailModel model = movieDetailModel.fromJson(jsonData);
+      MovieDetailModel model = MovieDetailModel.fromJson(jsonData);
       return model;
     } else {
       return null;

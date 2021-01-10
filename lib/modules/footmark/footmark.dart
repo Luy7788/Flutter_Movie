@@ -6,14 +6,14 @@ import 'package:nmtv/common/model/movieDetailModel.dart';
 import 'package:nmtv/common/model/movieListModel.dart';
 import 'package:nmtv/common/utils/global.dart';
 
-class footmarkPage extends StatefulWidget {
-  footmarkPage() : super();
+class FootmarkPage extends StatefulWidget {
+  FootmarkPage() : super();
 
   @override
-  State<StatefulWidget> createState() => footmarkPageState();
+  State<StatefulWidget> createState() => FootmarkPageState();
 }
 
-class footmarkPageState extends State<footmarkPage>
+class FootmarkPageState extends State<FootmarkPage>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
   List _footmark = Global.footmarkListCache;
@@ -79,7 +79,7 @@ class footmarkPageState extends State<footmarkPage>
 }
 
 class _footmarkList extends StatefulWidget {
-  List<movieDetailModel> footMarkList;
+  List<MovieDetailModel> footMarkList;
 
   _footmarkList({Key key, this.footMarkList}) : super(key: key);
 
@@ -111,7 +111,7 @@ class _footmarkListState extends State<_footmarkList> {
             height: 40,
           );
         } else {
-          movieDetailModel model = widget.footMarkList[index];
+          MovieDetailModel model = widget.footMarkList[index];
           return GestureDetector(
             behavior: HitTestBehavior.opaque, //包括其他区域的点击
             child: Container(
@@ -205,7 +205,7 @@ class _footmarkListState extends State<_footmarkList> {
             onTap: () {
               print('点击了----- ${model.title}');
               Map json = model.toJson();
-              movieListModel modelItem = movieListModel.fromJson(json);
+              MovieListModel modelItem = MovieListModel.fromJson(json);
               Navigation.pushMovieDetail(context, model.movieID, modelItem);
             },
           );

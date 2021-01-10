@@ -39,7 +39,7 @@ class Navigation {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => searchResult(keyword: keyword),
+          builder: (context) => SearchResult(keyword: keyword),
         )).then((value) {
       print('---------pushSearchResult 搜索结果返回');
       _recordPageSubtract();
@@ -47,12 +47,12 @@ class Navigation {
   }
 
   ///详情页面
-  static pushMovieDetail(BuildContext context, int movieId, movieListModel model) {
+  static pushMovieDetail(BuildContext context, int movieId, MovieListModel model) {
     _recordPageAdd();
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => movieDetail(movieID: movieId,listModel: model,),
+        builder: (context) => MovieDetail(movieID: movieId,listModel: model,),
       ),
     ).then((value) {
       print('---------pushMovieDetail 详情页面返回');
@@ -64,7 +64,7 @@ class Navigation {
   static pushFeedback(BuildContext context) {
     _recordPageAdd();
     Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-      return feedback();
+      return MyFeedback();
     })).then((value) {
       print('---------pushFeedback 详情页面返回');
       _recordPageSubtract();
@@ -102,7 +102,7 @@ class Navigation {
     //记录页面数量 +1
     _currentPageCount++;
     //通知-关闭banner
-    Global.eventBus.fire(eventBusBannerAd()..isShow = false);
+    Global.eventBus.fire(EventBusBannerAd()..isShow = false);
   }
 
   static void _recordPageSubtract() {
@@ -110,7 +110,7 @@ class Navigation {
     _currentPageCount--;
     //通知-打开banner
     if (_currentPageCount <= 0) {
-      Global.eventBus.fire(eventBusBannerAd()..isShow = true);
+      Global.eventBus.fire(EventBusBannerAd()..isShow = true);
     }
   }
 }

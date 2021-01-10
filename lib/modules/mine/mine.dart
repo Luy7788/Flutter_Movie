@@ -5,12 +5,12 @@ import 'package:nmtv/common/utils/cache.dart';
 import 'package:nmtv/common/utils/navigation.dart';
 import 'package:nmtv/common/utils/toast.dart';
 
-class minePage extends StatefulWidget {
+class MinePage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => minePageState();
+  State<StatefulWidget> createState() => MinePageState();
 }
 
-class minePageState extends State<minePage> {
+class MinePageState extends State<MinePage> {
   @override
   void initState() {}
 
@@ -35,7 +35,7 @@ class _mimeList extends StatefulWidget {
 }
 
 class __mimeListState extends State<_mimeList> {
-  final cache _cache = cache();
+  final Cache _cache = Cache();
   String _cacheSize;
 
   @override
@@ -100,7 +100,7 @@ class __mimeListState extends State<_mimeList> {
           title: '清除缓存',
           subTitle: this._cacheSize ?? "",
           tapAction: () {
-            alert.showCustom('是否清空缓存($_cacheSize)?', '取消', '确定', () {}, () {
+            Alert.showCustom('是否清空缓存($_cacheSize)?', '取消', '确定', () {}, () {
               this._cache.clearCache();
             });
           },

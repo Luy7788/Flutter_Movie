@@ -4,8 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:nmtv/common/config/config.dart';
 import 'package:nmtv/common/utils/global.dart';
 import 'package:nmtv/common/config/adapt.dart';
-import 'package:device_info/device_info.dart';
-import 'package:nmtv/common/utils/UrlEncode.dart';
 
 class API {
   //API

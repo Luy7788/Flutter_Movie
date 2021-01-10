@@ -1,4 +1,4 @@
-class movieListModel {
+class MovieListModel {
     String cover;
     int episodeNewest;
     int episodeTotal;
@@ -6,10 +6,10 @@ class movieListModel {
     double score;
     String title;
 
-    movieListModel({this.cover, this.episodeNewest, this.episodeTotal, this.id, this.score, this.title});
+    MovieListModel({this.cover, this.episodeNewest, this.episodeTotal, this.id, this.score, this.title});
 
-    factory movieListModel.fromJson(Map<String, dynamic> json) {
-        return movieListModel(
+    factory MovieListModel.fromJson(Map<String, dynamic> json) {
+        return MovieListModel(
             cover: json['cover'],
             episodeNewest: json['episodeNewest'],
             episodeTotal: json['episodeTotal'],

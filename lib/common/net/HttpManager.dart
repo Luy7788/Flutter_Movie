@@ -1,12 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:nmtv/common/net/api.dart';
 import 'package:nmtv/common/config/config.dart';
 import 'dart:async';
 import 'package:dio/dio.dart';
-import 'package:dio/adapter.dart';
-import 'package:nmtv/common/utils/UrlEncode.dart';
 import 'package:nmtv/common/utils/global.dart';
 import 'package:nmtv/common/utils/toast.dart';
 
@@ -67,7 +64,7 @@ class HttpManager {
       onError: (DioError err) async {
         print(' 请求异常: ' + err.toString());
         print(' 请求异常信息: ' + err.response?.toString() ?? "");
-        toast.show('请求异常，请稍候再试');
+        Toast.show('请求异常，请稍候再试');
         return err;
       },
     ));
@@ -166,15 +163,15 @@ class HttpManager {
             break;
           case 2:
             print('======== 弱提示错误：$code ---- message: $msg');
-            toast.show(msg);
+            Toast.show(msg);
             break;
           case 3:
             print('======== 强提示错误：$code ---- message: $msg');
-            alert.show(msg);
+            Alert.show(msg);
             break;
           case 4:
             print('======== 强制提示不能关闭错误：$code ---- message: $msg');
-            alert.showWithoutDismiss(msg);
+            Alert.showWithoutDismiss(msg);
             break;
           default:
             print('======== 其他错误：$code ---- message: $msg');

@@ -1,10 +1,5 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:nmtv/common/utils/global.dart';
-
-//import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 class Browser extends StatefulWidget {
@@ -31,7 +26,6 @@ class Browser extends StatefulWidget {
 }
 
 class _BrowserState extends State<Browser> {
-//  FlutterWebviewPlugin flutterWebviewPlugin = widget.flutterWebviewPlugin;
   String _javascript;
   double lineProgress = 0.0;
 
@@ -66,9 +60,11 @@ class _BrowserState extends State<Browser> {
               Global.js.keys.forEach((key) {
                 if (state.url.contains(key) == true) {
                   _javascript = Global.js[key];
-                  print("==========url: ${state.url} ==========匹配上Global.js.keys-> $key ====url: ${state.url}");
+                  print(
+                      "==========url: ${state.url} ==========匹配上Global.js.keys-> $key ====url: ${state.url}");
                 } else {
-                  print("==========url: ${state.url} ==========匹配不上Global.js.keys-> $key");
+                  print(
+                      "==========url: ${state.url} ==========匹配不上Global.js.keys-> $key");
                 }
               });
 
@@ -77,7 +73,8 @@ class _BrowserState extends State<Browser> {
                 widget._flutterWebviewPlugin
                     .evalJavascript(this._javascript)
                     .then((String response) {
-                  print("==========当前需要加载的js -> $_javascript ==========response ->$response");
+                  print(
+                      "==========当前需要加载的js -> $_javascript ==========response ->$response");
                 });
                 //获取到链接
                 widget._flutterWebviewPlugin

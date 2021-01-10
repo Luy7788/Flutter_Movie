@@ -3,20 +3,18 @@ import 'package:nmtv/common/model/movieListModel.dart';
 import 'package:nmtv/common/utils/global.dart';
 import 'package:nmtv/modules/widget/moviesList.dart';
 
-class searchResult extends StatefulWidget {
+class SearchResult extends StatefulWidget {
   String keyword;
-
-//  searchResult({this.searchId}) : super();
-  searchResult({Key key, this.keyword}) : super(key: key);
+  SearchResult({Key key, this.keyword}) : super(key: key);
 
   @override
-  _searchResultState createState() {
-    return _searchResultState();
+  _SearchResultState createState() {
+    return _SearchResultState();
   }
 }
 
-class _searchResultState extends State<searchResult> {
-  List<movieListModel> _recommendMovieItems = []; //推荐列表
+class _SearchResultState extends State<SearchResult> {
+  List<MovieListModel> _recommendMovieItems = []; //推荐列表
 
   @override
   void initState() {

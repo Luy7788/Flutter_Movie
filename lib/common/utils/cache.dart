@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:nmtv/common/utils/toast.dart';
 import 'package:path_provider/path_provider.dart';
 
-class cache {
+class Cache {
   ///加载缓存
   Future loadCache() async {
     try {
@@ -49,10 +49,10 @@ class cache {
       //删除缓存目录
       await delDir(tempDir);
       await loadCache();
-      toast.show('清除缓存成功');
+      Toast.show('清除缓存成功');
     } catch (e) {
       print(e);
-      toast.show('清除缓存失败');
+      Toast.show('清除缓存失败');
     } finally {
       //此处隐藏加载loading
     }

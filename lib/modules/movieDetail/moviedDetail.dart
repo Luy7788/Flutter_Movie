@@ -6,7 +6,6 @@ import 'package:wakelock/wakelock.dart';
 import 'package:flutter_ijkplayer/flutter_ijkplayer.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:nmtv/common/model/eventBusModes.dart';
 import 'package:nmtv/common/utils/navigation.dart';
 import 'package:nmtv/common/config/adapt.dart';
 import 'package:nmtv/common/model/movieDetailModel.dart';
@@ -19,29 +18,26 @@ import 'package:nmtv/modules/widget/webViewWidget.dart';
 
 final List _detailPageControl = [];
 
-class movieDetail extends StatefulWidget {
+class MovieDetail extends StatefulWidget {
   int movieID; //视频id
-  movieListModel listModel;
+  MovieListModel listModel;
 
-  movieDetail({Key key, this.movieID, this.listModel}) : super(key: key);
+  MovieDetail({Key key, this.movieID, this.listModel}) : super(key: key);
 
   @override
-  _movieDetailState createState() {
-    return _movieDetailState();
+  _MovieDetailState createState() {
+    return _MovieDetailState();
   }
 }
 
-class _movieDetailState extends State<movieDetail>
+class _MovieDetailState extends State<MovieDetail>
     with SingleTickerProviderStateMixin {
   final IjkMediaController ijkController = IjkMediaController();
-
-//  StreamSubscription _playerCurrentPosSubs; //播放器订阅 Stream
   double _playLastProgrss; //最后播放器进度
-
   TabController _tabController;
-  movieDetailModel _detailModel = movieDetailModel(); //详情模型
+  MovieDetailModel _detailModel = MovieDetailModel(); //详情模型
   String _keyWord = ""; //关键词
-  List<movieListModel> _recommendMovieItems = []; //推荐列表
+  List<MovieListModel> _recommendMovieItems = []; //推荐列表
   String _currentPlaySite = ""; //当前播放的线路 eg:"MJW"
   String _currentDisplaySite = ""; //当前用于显示的线路 ，和『_currentPlaySite』比较用于显示 选中第几集
   List<LinkItemModel> _currentLinks = List(); //当前采用的线路的 选集模型 数组
@@ -50,7 +46,6 @@ class _movieDetailState extends State<movieDetail>
   LinkItemModel _currentLinkModel; //当前采用的线路的当前 选集模型
   String _webviewLoadUrl; //webview加载用
   Timer _countTimer; //计算加载时间
-  bool _isToSeek = false; //是否跳转了
   final Browser _browser = Browser(
     url: "127.0.0.1",
     title: "",
@@ -67,8 +62,6 @@ class _movieDetailState extends State<movieDetail>
     print('-------movieDetail initState()------- $this ');
     _detailPageControl.add(this);
     Wakelock.enable(); //保持不锁屏
-    print(
-        '\n\n\n---------------------------- _detailPageControl.add \n$_detailPageControl\n\n\n');
   }
 
   @override
@@ -94,9 +87,6 @@ class _movieDetailState extends State<movieDetail>
     if (_detailPageControl.length <= 0) {
       Wakelock.disable(); //可以锁屏
     }
-    print(
-        '\n\n\n---------------------------- _detailPageControl.remove \n$_detailPageControl\n\n\n');
-
     super.dispose();
     ijkController?.dispose();
     print('------- movieDetail页面销毁------- -> $this');
@@ -168,25 +158,6 @@ class _movieDetailState extends State<movieDetail>
     });
   }
 
-  void _fijkValueListener() {
-//    FijkValue value = _player.value;
-//    print('================ FijkValue: ${value} ================');
-//    print(
-//        '================ FijkValue.state: ${value.state} ================$this');
-//    if (value.state == FijkState.started &&
-//        _isToSeek == false &&
-//        value.size != null) {
-//      //获取缓存的播放进度
-//      _isToSeek = true;
-//      int secondProgress =
-//          Global.getMovieProgress(this._detailModel.movieID, _currentLinkIndex);
-//      print('================ 获取到缓存进度 $secondProgress ================');
-//      Future.delayed(const Duration(milliseconds: 800), () {
-////        _player.seekTo(secondProgress);
-//      });
-//    }
-  }
-
   void _playWithUrl(String url) async {
     await ijkController.setNetworkDataSource(url, autoPlay: true);
     print("set data source success $this");
@@ -241,8 +212,6 @@ class _movieDetailState extends State<movieDetail>
         if (response != null) {
           _webviewLoadUrl = response;
           _currentLinkModel.realPlayLink = response;
-//          if (response.contains(".m3u8") == true) {
-//          }
           _playWithUrl(response);
           //上报链接
           Global.uploadRealLink(
@@ -285,7 +254,7 @@ class _movieDetailState extends State<movieDetail>
   void _showAlertToWeb() {
     if (_webviewLoadUrl == null ||
         (ijkController.isPlaying == false && _webviewLoadUrl != null)) {
-      alert.showCustom("加载失败，是否打开原网站地址", '取消', '确定', () {}, () {
+      Alert.showCustom("加载失败，是否打开原网站地址", '取消', '确定', () {}, () {
         print('=========倒计时结束');
         Navigation.pushMovieWebView(context, this._detailModel.title,
             _currentLinkModel.link, this._currentPlaySite);
@@ -308,7 +277,6 @@ class _movieDetailState extends State<movieDetail>
           for (var text in titlesList) {
             i++;
             Widget title = ListTile(
-//              title: Text('线路$i：' + text),
               title: Text(text),
               selected: text == this._currentDisplaySite,
               onTap: () {
@@ -319,7 +287,6 @@ class _movieDetailState extends State<movieDetail>
                   return;
                 } else {
                   this._currentDisplaySite = text;
-//                  this._currentPlaySite = text;
                   List<LinkItemModel> linksArr =
                       this._detailModel.links[_currentDisplaySite];
                   List<String> linkStringsArr = List();
@@ -328,7 +295,6 @@ class _movieDetailState extends State<movieDetail>
                   }
                   setState(() {
                     _currentLinks = linksArr;
-//                    _currentLinkItem = _currentLinks[_currentLinkIndex];
                     _currentLinksStrings = linkStringsArr;
                   });
                 }
@@ -435,7 +401,7 @@ class _movieDetailState extends State<movieDetail>
               child: TabBarView(
                 controller: this._tabController,
                 children: <Widget>[
-                  movieDetailFirst.custom(
+                  MovieDetailFirst.custom(
                     this._detailModel,
                     this._currentLinksStrings,
                     this._recommendMovieItems,
@@ -444,14 +410,7 @@ class _movieDetailState extends State<movieDetail>
                     (index) => _onTapSelectLinkItemAction(index),
                     () => _onTapShowBottomSheetAction(),
                   ),
-//                      director; //"导演"
-//                      screenwriter; //"编剧",
-//                      mainActors; //"主演"
-//                      region; //地区
-//                      language; //语言
-//                      summary; //"简介"
-//                      releaseTime; //年份
-                  movieDetailSecond.custom(
+                  MovieDetailSecond.custom(
                       _detailModel.title ?? "",
                       _detailModel.director ?? "",
                       _detailModel.screenwriter ?? "",

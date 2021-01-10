@@ -5,18 +5,18 @@ import 'package:nmtv/modules/widget/moviesList.dart';
 import 'package:nmtv/common/config/adapt.dart';
 
 /*第一页 剧集和推荐*/
-class movieDetailFirst extends StatefulWidget {
-  movieDetailModel _detailModel; //详情模型
+class MovieDetailFirst extends StatefulWidget {
+  MovieDetailModel _detailModel; //详情模型
   List<String> _indexTitles = []; //[第一集、第二集]
-  List<movieListModel> _recommendMovieItems = []; //推荐列表
+  List<MovieListModel> _recommendMovieItems = []; //推荐列表
   int _curentLinkIndex; //当前采用的线路下的当前选集 模型的index
   var _selectLinkItemAction; //选集事件
   var _selectShowBottomSheetAction; //选线路事件
   bool _isCurrentSelectSite = true;
 
-  movieDetailFirst({Key key}) : super(key: key);
+  MovieDetailFirst({Key key}) : super(key: key);
 
-  movieDetailFirst.custom(
+  MovieDetailFirst.custom(
     this._detailModel,
     this._indexTitles,
     this._recommendMovieItems,
@@ -27,12 +27,12 @@ class movieDetailFirst extends StatefulWidget {
   ) : super();
 
   @override
-  _movieDetailFirstState createState() {
-    return _movieDetailFirstState();
+  _MovieDetailFirstState createState() {
+    return _MovieDetailFirstState();
   }
 }
 
-class _movieDetailFirstState extends State<movieDetailFirst> {
+class _MovieDetailFirstState extends State<MovieDetailFirst> {
   @override
   void initState() {
     super.initState();

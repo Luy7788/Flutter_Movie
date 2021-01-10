@@ -2,17 +2,17 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:fluttertoast/fluttertoast.dart' as FT;
 
 dynamic AlertCTX;
 
 ///弱提示
-class toast {
+class Toast {
   static show(String tipText) {
-    Fluttertoast.showToast(
+    FT.Fluttertoast.showToast(
         msg: tipText,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
+        toastLength: FT.Toast.LENGTH_SHORT,
+        gravity: FT.ToastGravity.CENTER,
         timeInSecForIos: 2,
         backgroundColor: Color(0xFF9E9E9E),
         textColor: Color(0xFFFFFFFF),
@@ -21,7 +21,7 @@ class toast {
 }
 
 ///强提示
-class alert {
+class Alert {
   static show(String tipText) {
     showDialog(
       context: AlertCTX,

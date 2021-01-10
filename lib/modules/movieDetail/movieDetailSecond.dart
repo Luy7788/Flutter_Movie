@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /*第二页 详情页面*/
-class movieDetailSecond extends StatelessWidget {
+class MovieDetailSecond extends StatelessWidget {
   final String _director; //"导演"
   final String _screenwriter; //"编剧",
   final String _mainActors; //"主演"
@@ -11,7 +11,7 @@ class movieDetailSecond extends StatelessWidget {
   final String _releaseTime; //年份
   final String _title;
 
-  movieDetailSecond.custom(
+  MovieDetailSecond.custom(
       this._title,
       this._director,
       this._screenwriter,

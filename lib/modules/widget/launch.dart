@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -10,14 +9,14 @@ import 'package:nmtv/common/utils/navigation.dart';
 import 'dart:math' as math;
 import 'package:flutter/cupertino.dart';
 
-class launchPage extends StatefulWidget {
+class LaunchPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return new launchPageState();
+    return new LaunchPageState();
   }
 }
 
-class launchPageState extends State<launchPage> with SingleTickerProviderStateMixin implements OnSkipClickListener {
+class LaunchPageState extends State<LaunchPage> with SingleTickerProviderStateMixin implements OnSkipClickListener {
   Timer _timer;
   //动画控制器
   AnimationController controller;
@@ -64,7 +63,7 @@ class launchPageState extends State<launchPage> with SingleTickerProviderStateMi
     super.dispose();
     _timer?.cancel();
 //    _admmob?.hideAdInterstitial();
-    Global.eventBus.fire(eventBusBannerAd()..isShow = true);
+    Global.eventBus.fire(EventBusBannerAd()..isShow = true);
 //    _timer = null;
   }
 
@@ -96,38 +95,6 @@ class launchPageState extends State<launchPage> with SingleTickerProviderStateMi
           ),
           constraints: new BoxConstraints.expand(),
         ),
-//        Positioned(
-//          bottom: MediaQuery
-//              .of(context)
-//              .orientation == Orientation.portrait
-//              ? (Adapt.screenH() / 2 - 100)
-//              : (Adapt.screenW() / 2 - 50),
-////          height: 40,
-//          child: Text(
-//            "柠檬TV，酸爽看剧",
-//            style: TextStyle(
-//                color: Colors.black,
-//                fontSize: Adapt.px(30),
-//                fontWeight: FontWeight.w700
-//            ),
-//          ),
-//        ),
-//        new Container(
-//          child: Align(
-//            alignment: Alignment.topRight,
-//            child: new Container(
-//              padding: const EdgeInsets.only(top: 30.0, right: 20.0),
-//              child: new SkipDownTimeProgress(
-//                Colors.yellow.shade700,
-//                22.0,
-//                new Duration(seconds: 3),
-//                new Size(25.0, 25.0),
-//                skipText: "跳过",
-//                clickListener: this,
-//              ),
-//            ),
-//          ),
-//        ),
       ],
     );
   }

@@ -50,7 +50,7 @@ class NMTV extends StatelessWidget {
 
   //定义路由信息
   final Map<String, Function> routes = {
-    '/page': (context, {arguments}) => footmarkPage()
+    '/page': (context, {arguments}) => FootmarkPage()
   };
 
   @override
@@ -58,14 +58,12 @@ class NMTV extends StatelessWidget {
     // TODO: implement build
     return MaterialApp(
       theme: ThemeData(
-//        brightness: Brightness.light,
         appBarTheme: AppBarTheme(
           brightness: _brightnessStatus,
           color: Colors.yellow.shade600,
         ),
       ),
-//      home: NMtabbbar(),
-      home: launchPage(),
+      home: LaunchPage(),
       initialRoute: '/',
       onGenerateRoute: (RouteSettings settings) {
         // 统一处理
@@ -86,9 +84,6 @@ class NMTV extends StatelessWidget {
           return null;
         }
       },
-//      routes: <String, WidgetBuilder>{
-//        '/':(BuildContext context) => NMtabbbar(),
-//      },
     );
   }
 }

@@ -21,7 +21,7 @@ class _NMtabbbarState extends State<NMtabbbar> {
   StreamSubscription _configSubscription; //信号
   final _selectItemColor = Colors.yellow.shade600; //Colors.yellowAccent; //选中颜色
   final _unSelectItemColor = Colors.black; //未选中的颜色
-  final admob _admob = admob(); //广告ad
+  final Admob _admob = Admob(); //广告ad
   int _currentSelectIndex = 0; //当前选择item
   List<Widget> pages = List<Widget>();
 
@@ -52,10 +52,10 @@ class _NMtabbbarState extends State<NMtabbbar> {
     super.initState();
     print("------- tabbbar initState");
     pages
-      ..add(homePage())
-      ..add(discoverPage())
-      ..add(footmarkPage())
-      ..add(minePage());
+      ..add(HomePage())
+      ..add(DiscoverPage())
+      ..add(FootmarkPage())
+      ..add(MinePage());
 
   }
 
