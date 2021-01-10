@@ -1,7 +1,9 @@
-# Flutter_Movie
-flutter写的一个电影类APP
 
-### 目前该项目服务器已下架，跑起来无法看到正常页面
+# 服务器已停，目前模拟数据请求，数据来自网络，仅供学习参考
+
+# Flutter_Movie
+这是一个学习flutter时写的一个电影类APP，播放时是运行webview提取某网站页面的播放地址放到flutter进行播放。
+
 
 效果预览:
 
