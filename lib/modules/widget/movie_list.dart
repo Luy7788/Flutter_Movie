@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nmtv/common/utils/navigation.dart';
 import 'package:nmtv/common/config/config.dart';
-import 'package:nmtv/common/model/movieListModel.dart';
+import 'package:nmtv/common/model/movie_list_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class MoviesList extends StatelessWidget {

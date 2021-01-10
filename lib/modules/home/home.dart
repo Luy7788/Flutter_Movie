@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:nmtv/common/model/eventBusModes.dart';
-import 'package:nmtv/common/model/movieListModel.dart';
+import 'package:nmtv/common/model/movie_list_model.dart';
 import 'package:nmtv/common/utils/toast.dart';
-import 'package:nmtv/modules/widget/moviesList.dart';
-import 'package:event_bus/event_bus.dart';
+import 'package:nmtv/modules/widget/movie_list.dart';
 import 'dart:async';
 import 'package:nmtv/common/utils/global.dart';
-import 'package:nmtv/common/model/configModel.dart';
+import 'package:nmtv/common/model/config_model.dart';
 
 class HomePage extends StatefulWidget {
   @override

@@ -1,5 +1,5 @@
-import 'movieDetailModel.dart';
-import 'movieListModel.dart';
+import 'movie_detail_model.dart';
+import 'movie_list_model.dart';
 
 class EventBusBannerAd {
   bool isShow;

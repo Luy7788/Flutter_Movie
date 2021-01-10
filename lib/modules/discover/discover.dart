@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nmtv/common/config/config.dart';
-import 'package:nmtv/common/model/eventBusModes.dart';
+import 'package:nmtv/common/model/event_bus.dart';
 import 'package:nmtv/common/utils/navigation.dart';
 import 'package:nmtv/common/utils/global.dart';
-import 'package:nmtv/common/model/configModel.dart';
+import 'package:nmtv/common/model/config_model.dart';
 import 'dart:async';
 
 class DiscoverPage extends StatefulWidget {

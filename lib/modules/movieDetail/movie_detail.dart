@@ -8,13 +8,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:nmtv/common/utils/navigation.dart';
 import 'package:nmtv/common/config/adapt.dart';
-import 'package:nmtv/common/model/movieDetailModel.dart';
-import 'package:nmtv/common/model/movieListModel.dart';
+import 'package:nmtv/common/model/movie_detail_model.dart';
+import 'package:nmtv/common/model/movie_list_model.dart';
 import 'package:nmtv/common/utils/global.dart';
 import 'package:nmtv/common/utils/toast.dart';
-import 'package:nmtv/modules/movieDetail/movieDetailFirst.dart';
-import 'package:nmtv/modules/movieDetail/movieDetailSecond.dart';
-import 'package:nmtv/modules/widget/webViewWidget.dart';
+import 'package:nmtv/modules/movieDetail/movie_detail_first.dart';
+import 'package:nmtv/modules/movieDetail/movie_detail_second.dart';
+import 'package:nmtv/modules/widget/browser.dart';
 
 final List _detailPageControl = [];
 

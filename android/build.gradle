@@ -1,11 +1,18 @@
 buildscript {//闭包里是gradle脚本执行所需依赖，分别是对应的maven库和插件。
     repositories {
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        mavenCentral()
+        maven { url 'https://maven.google.com' }
         google()
+        mavenLocal()
         jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.android.tools.build:gradle:3.6.3'
+//        classpath 'com.android.tools.build:gradle:3.5.3'
     }
 
     subprojects {
@@ -26,7 +33,13 @@ buildscript {//闭包里是gradle脚本执行所需依赖，分别是对应的ma
 
 allprojects {//闭包里是项目本身需要的依赖，比如项目所需的maven库。
     repositories {
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        mavenCentral()
+        maven { url 'https://maven.google.com' }
         google()
+        mavenLocal()
         jcenter()
     }
 //    显示详细错误报告

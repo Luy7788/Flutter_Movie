@@ -8,7 +8,7 @@ import '../footmark/footmark.dart';
 import '../discover/discover.dart';
 import '../mine/mine.dart';
 import 'package:flutter/material.dart';
-import 'package:nmtv/common/model/eventBusModes.dart';
+import 'package:nmtv/common/model/event_bus.dart';
 import 'package:nmtv/common/utils/global.dart';
 import 'package:nmtv/common/utils/admob.dart';
 

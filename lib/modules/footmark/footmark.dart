@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:nmtv/common/utils/navigation.dart';
 import 'package:nmtv/common/config/adapt.dart';
-import 'package:nmtv/common/model/movieDetailModel.dart';
-import 'package:nmtv/common/model/movieListModel.dart';
+import 'package:nmtv/common/model/movie_detail_model.dart';
+import 'package:nmtv/common/model/movie_list_model.dart';
 import 'package:nmtv/common/utils/global.dart';
 
 class FootmarkPage extends StatefulWidget {

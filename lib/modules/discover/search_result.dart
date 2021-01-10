@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nmtv/common/model/movieListModel.dart';
+import 'package:nmtv/common/model/movie_list_model.dart';
 import 'package:nmtv/common/utils/global.dart';
-import 'package:nmtv/modules/widget/moviesList.dart';
+import 'package:nmtv/modules/widget/movie_list.dart';
 
 class SearchResult extends StatefulWidget {
   String keyword;

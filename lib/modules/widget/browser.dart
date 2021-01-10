@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nmtv/common/utils/global.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
+// ignore: must_be_immutable
 class Browser extends StatefulWidget {
   String url;
   final String title;

@@ -1,14 +1,14 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:nmtv/common/model/eventBusModes.dart';
-import 'package:nmtv/common/model/movieListModel.dart';
-import 'package:nmtv/modules/discover/searchResult.dart';
+import 'package:nmtv/common/model/event_bus.dart';
+import 'package:nmtv/common/model/movie_list_model.dart';
+import 'package:nmtv/modules/discover/search_result.dart';
 import 'package:nmtv/modules/mine/feedback.dart';
-import 'package:nmtv/modules/movieDetail/moviedDetail.dart';
+import 'package:nmtv/modules/movieDetail/movie_detail.dart';
 import 'package:nmtv/modules/widget/tabbar.dart';
 import 'package:nmtv/common/utils/global.dart';
-import 'package:nmtv/modules/widget/webViewWidget.dart';
+import 'package:nmtv/modules/widget/browser.dart';
 
 int _currentPageCount = 0; //当前打开的页数量
 

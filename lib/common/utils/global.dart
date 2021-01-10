@@ -1,9 +1,8 @@
 import 'package:flutter/foundation.dart';
-import 'package:nmtv/common/model/eventBusModes.dart';
-import 'package:nmtv/common/model/movieDetailModel.dart';
-import 'package:nmtv/common/model/movieListModel.dart';
+import 'package:nmtv/common/model/event_bus.dart';
+import 'package:nmtv/common/model/movie_detail_model.dart';
+import 'package:nmtv/common/model/movie_list_model.dart';
 import 'package:nmtv/common/utils/toast.dart';
-
 // import 'package:unique_ids/unique_ids.dart';
 // import 'package:flutter/services.dart';
 import 'package:package_info/package_info.dart';
@@ -11,7 +10,7 @@ import 'package:device_info/device_info.dart';
 import 'package:encrypt/encrypt.dart' as PP;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:event_bus/event_bus.dart';
-import 'package:nmtv/common/net/HttpManager.dart';
+import 'package:nmtv/common/net/http_manager.dart';
 import 'package:nmtv/common/net/api.dart';
 import 'package:nmtv/common/config/config.dart';
 import 'dart:async';
@@ -19,7 +18,7 @@ import 'dart:io';
 import 'dart:convert';
 
 ///模型
-import 'package:nmtv/common/model/configModel.dart';
+import 'package:nmtv/common/model/config_model.dart';
 
 ///全局单例
 global Global = global();
@@ -375,7 +374,7 @@ class global {
         getModelJS();
 
         //版本判断
-        if (model.startupMsg.level != null && model.startupMsg.level > 0) {
+        if (model?.startupMsg?.level != null && model.startupMsg.level > 0) {
           switch (model.startupMsg.level) {
             case 1:
               break;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nmtv/common/model/movieDetailModel.dart';
-import 'package:nmtv/common/model/movieListModel.dart';
-import 'package:nmtv/modules/widget/moviesList.dart';
+import 'package:nmtv/common/model/movie_detail_model.dart';
+import 'package:nmtv/common/model/movie_list_model.dart';
+import 'package:nmtv/modules/widget/movie_list.dart';
 import 'package:nmtv/common/config/adapt.dart';
 
 /*第一页 剧集和推荐*/
